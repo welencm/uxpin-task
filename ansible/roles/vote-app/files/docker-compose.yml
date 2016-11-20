@@ -1,0 +1,14 @@
+---
+votedb:
+  image: mongo
+  container_name: votedb
+  hostname: votedb
+
+vote-app:
+  image: welencm/vote-app
+  container_name: vote-app
+  hostname: voteapp
+  ports:
+    - '8080:8080'
+  links:
+   - votedb

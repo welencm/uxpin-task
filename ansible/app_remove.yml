@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Stop and remove application
+      docker_container:
+        name: voteapp
+        state: absent
+
+    - name: Stop and remove mongodb
+      docker_container:
+        name: votedb
+        state: absent

@@ -1,0 +1,13 @@
+- name: Install Unattended Upgrades
+  apt:
+    name: unattended-upgrades
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Install pip
+  apt:
+    name: python-pip
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"

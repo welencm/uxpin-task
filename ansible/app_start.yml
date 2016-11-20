@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Run mongo container
+      docker_container:
+        name: votedb
+        image: mongo
+        state: started
+        hostname: votedb
+
+    - name: Run vote-app
+      docker_container:
+        name: voteapp
+        image: welencm/vote-app
+        state: started
+        hostname: voteapp
+        ports:
+          - '8080:8080'
+        links:
+         - votedb

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Stop application
+      docker_container:
+        name: voteapp
+        state: stopped
+
+    - name: Stop database
+      docker_container:
+        name: votedb
+        state: stopped

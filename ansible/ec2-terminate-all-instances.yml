@@ -1,0 +1,17 @@
+---
+- hosts: ec2
+  remote_user: ubuntu
+
+  vars:
+    region: eu-central-1
+
+  tasks:
+    - name: Gather facts
+      action: ec2_facts
+
+    - name: Terminate instances
+      local_action: ec2
+        state='absent'
+        instance_ids='{{ ec2_id }}'
+        region='{{ region }}'
+        wait=true

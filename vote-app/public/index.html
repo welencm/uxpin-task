@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html ng-app="voteApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Simple voting application</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html { overflow-y:scroll; }
+        body { padding-top:50px; }
+        .btn-lg{ padding:40px; border-radius:6px;   }
+    </style>
+
+    <!-- jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="core.js"></script>
+
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+      <div class="jumbotron text-center">
+          <h1>Simple voting application</h1>
+      </div>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1 text-right">
+            <button  type="submit" class="btn btn-primary btn-lg" ng-click="vote('/api/vote/one')">Vote!</button>
+          </div>
+          <div class="col-md-6 text-center">
+            <div class="well well-lg">
+            <form>
+              <h3>
+                Batman
+                <span class="label label-info">{{ votes.votes_one }}</span>
+                <span class="label label-info">{{ votes.votes_two }}</span>
+                Superman
+              </h3>
+            </form>
+            </div>
+          </div>
+          <div class="col-md-2 text-left">
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="vote('/api/vote/two')">Vote!</button>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

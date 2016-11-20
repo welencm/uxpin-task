@@ -1,0 +1,10 @@
+---
+- name: Copy docker-compose.yml
+  copy:
+    src: docker-compose.yml
+    dest: '{{ ansible_env.HOME }}'
+
+- name: Run vote-app
+  docker_service:
+    project_src: '{{ ansible_env.HOME }}'
+    state: present

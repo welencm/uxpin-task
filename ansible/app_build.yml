@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  tasks:
+    - name: Build docker image
+      docker_image:
+        name: welencm/vote-app
+        path: /home/asand/workspace/uxpin-task/vote-app
+        state: present
+        push: no

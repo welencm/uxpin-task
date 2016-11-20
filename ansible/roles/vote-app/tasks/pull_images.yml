@@ -1,0 +1,8 @@
+---
+- name: Pull vote-app from Docker Hub
+  docker_image:
+    name: welencm/vote-app
+
+- name: Pull mongo from Docker Hub
+  docker_image:
+    name: library/mongo

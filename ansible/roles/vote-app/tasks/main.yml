@@ -1,0 +1,13 @@
+---
+# it can probably be avioded by resetting ssh session
+- name: Wait for docker
+  pause: minutes=1
+
+- name: Pull images
+  include: pull_images.yml
+
+# - name: Start application containers
+#   include: run_containers.yml
+
+- name: Start application with docker compose
+  include: run_compose.yml

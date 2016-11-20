@@ -1,0 +1,39 @@
+- name: Ensure Docker public key is installed
+  apt_key:
+    keyserver: hkp://p80.pool.sks-keyservers.net:80
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+    state: present
+  become: true
+
+- name: Add Docker repository
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+  become: true
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: Install Docker
+  apt:
+    name: docker-engine
+    state: present
+  become: true
+  when: ansible_os_family == 'Debian'
+
+- name: Create docker group
+  group:
+    name: docker
+    state: present
+  become: true
+
+- name: Add user to docker group
+  user:
+    name: '{{ ansible_user_id }}'
+    groups: docker
+    append: yes
+  become: true
+
+- name: Install docker-py
+  pip:
+    name: docker-py
+
+- name: Install docker-compose
+  pip:
+    name: docker-compose
